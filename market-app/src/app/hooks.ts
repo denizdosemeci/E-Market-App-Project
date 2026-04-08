@@ -11,3 +11,6 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 // Neden Var: useAppSelector dediğinde TypeScript otomatik olarak senin RootState'ine (yani deponun içindeki tüm çekmecelere) bakar ve 
 // sana hata yaptırmaz.
 
+// Hook	Ne yapar
+// useAppSelector	state okur
+// useAppDispatch	action gönderir

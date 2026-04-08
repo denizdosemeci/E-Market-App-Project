@@ -1,41 +1,70 @@
 import React from 'react';
+import { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { updateQuantity, removeFromCart } from '../features/cartSlice';
 
 function Cart() {
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector((state) => state.cart.items);
+
+  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
+  const [isModelOpen, setIsModelOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+
   return (
     <div className="cart-container">
       {/* SOL TARAF: ÜRÜNLER */}
       <div className="cart-items-list">
-        <h2 style={{ textAlign: 'left', marginBottom: '20px' }}>Your Cart (1)</h2>
+        <h2 style={{ textAlign: 'left', marginBottom: '20px' }}>Sepetin ({cartItems.length})</h2>
         
-        <div className="cart-item">
-          <img src="https://via.placeholder.com/100" alt="Product" className="cart-item-img" />
-          <div className="cart-item-info">
-            <h3 className="cart-item-title">Premium Wireless Headphones</h3>
-            <span className="cart-item-price">$199.00</span>
-          </div>
-          <div className="quantity-controls">
-            <button className="qty-btn">-</button>
-            <span>1</span>
-            <button className="qty-btn">+</button>
-          </div>
-          <button style={{ color: '#ff4757', border: 'none', background: 'none', cursor: 'pointer', marginLeft: '10px' }}>
-            Remove
-          </button>
-        </div>
+        {cartItems.length === 0 ? (
+          <p>Sepetiniz şu an boş.</p>
+        ) : (
+          cartItems.map((item) => (
+            <div key={item.id} className="cart-item">
+              <div className="cart-item-info">
+                <img src={item.thumbnail} alt={item.title} />
+                <div>
+                  <h4>{item.title}</h4>
+                  <p className="item-price-tag">${item.price}</p>
+                </div>
+              </div>
+
+              <div className="cart-item-actions">
+                <div className="quantity-controls">
+                  <button onClick={() => dispatch(updateQuantity({ id: item.id, amount: -1 }))}>-</button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => dispatch(updateQuantity({ id: item.id, amount: 1 }))}>+</button>
+                </div>
+                
+                <button 
+                  onClick={() => dispatch(removeFromCart(item.id))}
+                  style={{ color: '#ff4757', border: 'none', background: 'none', cursor: 'pointer', marginLeft: '10px' }}
+                >
+                  Kaldır
+                </button>
+              </div>
+            </div>  
+          ))
+        )}
       </div>
 
       {/* SAĞ TARAF: ÖZET */}
       <aside className="cart-summary">
-        <h3 className="summary-title">Order Summary</h3>
+        <h3 className="summary-title">Sipariş Özeti</h3>
         <div className="summary-row">
-          <span>Subtotal</span>
-          <span>$199.00</span>
+          <span>Ara Toplam</span>
+          <span>${totalPrice.toFixed(2)}</span>
         </div>
         <div className="summary-total">
-          <span>Total</span>
-          <span>$199.00</span>
+          <span>Toplam</span>
+          <span style={{ fontWeight: 'bold' }}>${totalPrice.toFixed(2)}</span>
         </div>
-        <button className="checkout-btn">PROCEED TO CHECKOUT</button>
+        <button className="checkout-btn" disabled={cartItems.length === 0}>
+          ÖDEMEYE GEÇ
+        </button>
       </aside>
     </div>
   );

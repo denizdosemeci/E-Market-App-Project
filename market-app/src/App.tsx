@@ -1,40 +1,52 @@
-import React from 'react';
-import { getProducts } from './services/productService';
-import type { Product } from './types/Product';
-import './App.css'; // Stil dosyamızı bağladık
-import Products from './pages/Products'
+import React, { useState } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import './App.css';
+import Products from './pages/Products';
 import Cart from './pages/Cart';
+import Favorites from './pages/Favorites';
+import { useAppSelector } from './app/hooks';
 
 function App() {
+  const [search, setSearch] = useState<string>("");
+  const favorites = useAppSelector((state) => state.favorites.favorites);
 
   return (
     <div className="app-wrapper">
-      {/* Üst Bar */}
       <header className="header-bar">
-        <div className="logo-area">
-          <div className="logo-dot"></div>
-          E-MARKET
-        </div>
-
+        <div className="logo-area">E-MARKET</div>
+        
         <div className="search-controls">
-          <input type="text" className="input-field" placeholder="Search for products..." />
-          <select className="select-field">
-            <option>Featured</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
-          </select>
+          <input 
+            type="text" 
+            className="input-field"  
+            placeholder="Search products..." 
+            value={search} 
+            onChange={(e) => setSearch(e.target.value)} 
+          />
         </div>
       </header>
 
+      <div style={{ padding: '20px', background: '#f8f9fa' }}>
+        <Link to="/" style={{ marginRight: '15px', textDecoration: 'none', fontWeight: 'bold' }}>
+            🏠 Ana Sayfa
+        </Link>
+        <Link to="/favorites" style={{ marginRight: '15px', textDecoration: 'none', fontWeight: 'bold', color: '#ff4757' }}>
+            ❤️ Favorilerim ({favorites.length})
+        </Link>
+        <Link to="/cart" style={{ marginRight: '15px', textDecoration: 'none', fontWeight: 'bold', color: '#119749' }}>
+            🛒 Sepetim 
+        </Link>
+      </div>
+
       <main className="main-content">
-        {/* <Products /> */}
-        <Cart />
+        <Routes>
+          {/* Arama kelimesini Products'a paslıyoruz */}
+          <Route path="/" element={<Products search={search} />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/favorites" element={<Favorites />} /> 
+        </Routes>
       </main>
-
     </div>
-
-
-    
   );
 }
 

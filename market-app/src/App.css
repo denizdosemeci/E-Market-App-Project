@@ -85,18 +85,31 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 40px 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  gap: 30px; /* Kartların arasındaki nefes payı */
 }
 
 /* Ürün Kartı */
 .product-item {
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  /* Burası önemli: Değişimin yumuşak olması için */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+  border: 1px solid transparent;
+}
+
+.product-item:hover {
+  transform: translateY(-10px); 
+  border-color: #646cff; 
+  box-shadow: 0 14px 28px rgba(100, 108, 255, 0.15), 0 10px 10px rgba(100, 108, 255, 0.1);
 }
 
 .img-container {
+  height: 160px; /* Resim alanını kısalttık */
+  padding: 10px;
   background-color: #f9f9f9;
   border: 1px solid #f1f1f1;
   border-radius: 12px;
@@ -106,7 +119,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
 }
 
 .product-thumb {
@@ -301,4 +313,210 @@
 
 .checkout-btn:hover {
   background-color: #535bf2;
+}
+
+
+.img-container {
+  position: relative; 
+}
+
+.like-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background-color: white; 
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  z-index: 10;
+  font-size: 16px;
+  line-height: 1;
+  transition: all 0.3s ease; 
+  color: #888; 
+}
+
+.like-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  color: #ff4757; 
+}
+
+.like-btn.active {
+  color: #ff4757 !important; 
+  transform: scale(1.2); 
+  background-color: #fff0f0; 
+}
+
+/* --- FAVORİLER SAYFASI (WISHLIST) TASARIMI --- */
+
+.favorites-container {
+  padding: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in-out; /* Sayfa açılış efekti */
+}
+
+.favorites-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 15px;
+}
+
+.favorites-header h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Favori sayısını gösteren küçük rozet */
+.fav-count-badge {
+  background-color: #ff4757;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Favoriler Boşsa Görünecek Stil */
+.empty-favorites {
+  text-align: center;
+  padding: 100px 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 2px dashed #eee;
+}
+
+.empty-favorites i {
+  font-size: 4rem;
+  color: #ddd;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.empty-favorites p {
+  color: #888;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.remove-fav-btn {
+  background: none;
+  border: 1px solid #ff4757;
+  color: #ff4757;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.remove-fav-btn:hover {
+  background-color: #ff4757;
+  color: white;
+}
+
+/* Favori Sayfası Geçiş Efekti */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- MODAL CSS --- */
+
+/* Modalın arka planındaki koyu katman */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Arka planı karartır */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal kutusu */
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease; /* Açılış efekti */
+}
+
+.modal-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #2f3542;
+}
+
+/* Modal içindeki butonların dizilimi */
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-actions button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* "Ürünü sepetten çıkar" butonu */
+.btn-remove-only {
+  background-color: #f1f2f6;
+  color: #2f3542;
+}
+
+.btn-remove-only:hover {
+  background-color: #dfe4ea;
+}
+
+/* "Ürünü sepetten çıkar ve favorilere ekle" butonu */
+.btn-remove-and-fav {
+  background-color: #ff4757;
+  color: white;
+}
+
+.btn-remove-and-fav:hover {
+  background-color: #ff6b81;
+}
+
+/* "Vazgeç" butonu */
+.btn-cancel {
+  background: none;
+  color: #a4b0be;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+/* Basit bir açılış animasyonu */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
