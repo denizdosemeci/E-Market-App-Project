@@ -56,15 +56,15 @@ src/
 
 ### 🚀 Bugün Tamamlanan Özellikler (Gün 3-4)
 
--- **Sepet Dinamikleri:** cartSlice üzerinden ürün ekleme, miktar artırma/azaltma ve sepetten çıkarma işlemleri dinamik hale getirildi.
--- **Merkezi Veri Güncelleme:** Sepetteki ürün miktarı değiştikçe toplam fiyat (Total Price) alanının anlık güncellenmesi sağlandı.
--- **Silme Onay Modalı:** Ürün silme işleminden önce kullanıcıdan onay alan ve alternatif olarak ürünü favorilere ekleme seçeneği sunan modal yapısı eklendi.
--- **Koşullu Render Yapısı:** Sepet boş olduğunda “Sepetiniz Boş” mesajı gösterilecek şekilde ve modal içeriği favori durumuna göre değişecek şekilde yapı kuruldu.
--- **Favori Sistemi:** Ürünlerin favorilere eklenmesi sağlandı ve sepet ile favori sistemi arasında bağlantı kuruldu.
--- **UI İyileştirmeleri:** position: sticky ile sipariş özeti sabit tutuldu, position: fixed ile modal konumlandırıldı ve overlay + fadeIn animasyonları eklendi.
+- **Sepet Dinamikleri:** cartSlice üzerinden ürün ekleme, miktar artırma/azaltma ve sepetten çıkarma işlemleri dinamik hale getirildi.
+- **Merkezi Veri Güncelleme:** Sepetteki ürün miktarı değiştikçe toplam fiyat (Total Price) alanının anlık güncellenmesi sağlandı.
+- **Silme Onay Modalı:** Ürün silme işleminden önce kullanıcıdan onay alan ve alternatif olarak ürünü favorilere ekleme seçeneği sunan modal yapısı eklendi.
+- **Koşullu Render Yapısı:** Sepet boş olduğunda “Sepetiniz Boş” mesajı gösterilecek şekilde ve modal içeriği favori durumuna göre değişecek şekilde yapı kuruldu.
+- **Favori Sistemi:** Ürünlerin favorilere eklenmesi sağlandı ve sepet ile favori sistemi arasında bağlantı kuruldu.
+- **UI İyileştirmeleri:** position: sticky ile sipariş özeti sabit tutuldu, position: fixed ile modal konumlandırıldı ve overlay + fadeIn animasyonları eklendi.
 
 ### 🛠️ Kullanılan Teknolojiler (Gün 3-4)
 
--- **React Hooks:** useState ile modal ve UI state yönetimi sağlandı.
--- **Redux Toolkit:** Global state yönetimi ve PayloadAction ile tip güvenli güncellemeler yapıldı.
--- **CSS / SCSS:** Modal, overlay ve animasyonlar için stil yapısı oluşturuldu.
+- **React Hooks:** useState ile modal ve UI state yönetimi sağlandı.
+- **Redux Toolkit:** Global state yönetimi ve PayloadAction ile tip güvenli güncellemeler yapıldı.
+- **CSS / SCSS:** Modal, overlay ve animasyonlar için stil yapısı oluşturuldu.
