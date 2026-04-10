@@ -68,3 +68,17 @@ src/
 - **React Hooks:** useState ile modal ve UI state yönetimi sağlandı.
 - **Redux Toolkit:** Global state yönetimi ve PayloadAction ile tip güvenli güncellemeler yapıldı.
 - **CSS / SCSS:** Modal, overlay ve animasyonlar için stil yapısı oluşturuldu.
+
+### 🚀 Bugün Tamamlanan Özellikler (Gün 5)
+
+- **Akıllı Silme Onay Mekanizması:** Sepetten ürün kaldırılmadan önce kullanıcıya seçim yaptıran, profesyonel bir Modal (Onay Penceresi) sistemi entegre edildi.
+- **Çift Yönlü Aksiyon Yapısı:** Modal içine "Sadece Sepetten Çıkar" ve "Çıkar ve Favorilere Ekle" olmak üzere iki farklı fonksiyonel seçenek tanımlandı.
+- **Dinamik Favori Kontrolü:** favoriteItems state'i anlık olarak kontrol edilerek, ürün zaten favorilerdeyse kullanıcının karşısına mükerrer (gereksiz) butonların çıkması engellendi (Conditional Rendering).
+- **Anlık Sepet Toplamı (Real-time Calculation):** reduce metodu kullanılarak ürün miktarı veya ürün silme işlemlerine bağlı olarak sepet tutarının anlık güncellenmesi sağlandı.
+- **Modern Modal Arayüzü:** backdrop-filter (blur efekti) ve yumuşak geçişli animasyonlar kullanılarak, uygulamanın teknik duruşuyla uyumlu, ferah bir modal tasarımı yapıldı.
+
+### 🛠️ Kullanılan Teknolojiler (Gün 5)
+
+- **React Context & Local State:** Modalın açık/kapalı durumu ve seçili ürünün takibi için.
+- **Advanced Redux Dispatch:** Birden fazla slice (Cart ve Favorite) arasındaki aksiyonların tek bir buton tetiklemesiyle yönetilmesi.
+- **Glassmorphism CSS:** Arka planı bulanıklaştıran modern katman tasarımı.
