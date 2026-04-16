@@ -5,6 +5,7 @@ import Products from './pages/Products';
 import Cart from './pages/Cart';
 import Favorites from './pages/Favorites';
 import { useAppSelector } from './app/hooks';
+import AddressPage from './pages/AddressPage';
 
 function App() {
   const [search, setSearch] = useState<string>("");
@@ -36,6 +37,9 @@ function App() {
         <Link to="/cart" style={{ marginRight: '15px', textDecoration: 'none', fontWeight: 'bold', color: '#119749' }}>
             🛒 Sepetim 
         </Link>
+        <Link to="/address" style={{ textDecoration: 'none', fontWeight: 'bold', color: '#1e90ff' }}>
+            📍 Adres Bilgilerim
+        </Link>
       </div>
 
       <main className="main-content">
@@ -44,6 +48,7 @@ function App() {
           <Route path="/" element={<Products search={search} />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/favorites" element={<Favorites />} /> 
+          <Route path="/address" element={<AddressPage />} />
         </Routes>
       </main>
     </div>

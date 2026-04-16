@@ -14,7 +14,9 @@ const Products: React.FC<ProductsProps> = ({ search }) => {
   const { items: products } = useAppSelector((state) => state.products);
 
   const favorites = useAppSelector((state) => state.favorites.favorites);
-  console.log("Favorilerim:", favorites); // Favori ürünleri konsola yazdır
+  console.log("Favorilerim:", favorites); 
+
+  const [sortBy, setSortBy] = React.useState<string>(''); 
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -25,10 +27,34 @@ const Products: React.FC<ProductsProps> = ({ search }) => {
     p.title.toLowerCase().includes(search.toLowerCase())
   );
 
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    if (sortBy === 'price-asc') {
+      return a.price - b.price;
+    } else if (sortBy === 'price-desc') {
+      return b.price - a.price;
+    } else {
+      return 0;
+    }
+  });
+
   return (
+  <>
+      <div className="sorting-wrapper" style={{ marginBottom: '20px', textAlign: 'right' }}>
+        <select 
+          className="sort-select"
+          value={sortBy} 
+          onChange={(e) => setSortBy(e.target.value)}
+        >
+          <option value="">Fiyata Göre Sırala</option>
+          <option value="price-asc">Fiyat: Artan</option>
+          <option value="price-desc">Fiyat: Azalan</option>
+        </select>
+      </div>
+
+
     
     <div className="products-grid">
-      {filteredProducts.map((product) => {
+      {sortedProducts.map((product) => {
         const isFavorite = favorites.some((fav: Product) => fav.id === product.id);
 
         const handleLike = (e: React.MouseEvent) => {
@@ -60,6 +86,7 @@ const Products: React.FC<ProductsProps> = ({ search }) => {
       
       {filteredProducts.length === 0 && <p>Ürün bulunamadı.</p>}
     </div>
+    </>
   );
 };
 

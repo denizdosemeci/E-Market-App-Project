@@ -520,3 +520,198 @@
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.sorting-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  margin-bottom: 25px;
+}
+
+
+.sort-select {
+
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2f3542;
+  background-color: #ffffff;
+
+  border: 2px solid #f1f2f6;
+  border-radius: 12px;
+
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232f3542' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px; 
+}
+
+.sort-select option {
+  padding: 10px;
+  background-color: #ffffff;
+  color: #2f3542;
+}
+
+
+/* Ana Konteynır */
+.address-page-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.address-section-title {
+  font-size: 1.4rem;
+  color: #2d3436;
+  margin-bottom: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.address-section-title::before {
+  content: "";
+  width: 4px;
+  height: 24px;
+  background-color: #ff4757; /* Projenin vurgu rengi */
+  border-radius: 2px;
+}
+
+/* Form Tasarımı */
+.address-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* İki sütunlu yapı */
+  gap: 20px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f2f6;
+  margin-bottom: 50px;
+}
+
+/* Form Grupları (Label + Input) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: span 2; /* Adres alanı tam genişlik */
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #636e72;
+  margin-left: 2px;
+}
+
+.form-group input, 
+.form-group textarea {
+  padding: 12px 16px;
+  border: 2px solid #f1f2f6;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background-color: #fdfdfd;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+  border-color: #ff4757;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.1);
+}
+
+/* Kaydet Butonu */
+.btn-save-address {
+  grid-column: span 2;
+  background-color: #2f3542;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-save-address:hover {
+  background-color: #ff4757;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+/* Kayıtlı Adres Kartları Listesi */
+.saved-addresses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.address-card {
+  background: white;
+  border: 2px solid #f1f2f6;
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.address-card:hover {
+  border-color: #ff4757;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.address-tag {
+  display: inline-block;
+  background: #f1f2f6;
+  color: #57606f;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.address-card h4 {
+  margin: 0 0 8px 0;
+  color: #2f3542;
+  font-size: 1.1rem;
+}
+
+.address-card p {
+  margin: 4px 0;
+  color: #747d8c;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.address-card .phone {
+  margin-top: 12px;
+  color: #2f3542;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
