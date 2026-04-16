@@ -82,3 +82,16 @@ src/
 - **React Context & Local State:** Modalın açık/kapalı durumu ve seçili ürünün takibi için.
 - **Advanced Redux Dispatch:** Birden fazla slice (Cart ve Favorite) arasındaki aksiyonların tek bir buton tetiklemesiyle yönetilmesi.
 - **Glassmorphism CSS:** Arka planı bulanıklaştıran modern katman tasarımı.
+
+### 🚀 Bugün Tamamlanan Özellikler (Gün 6)
+- **Fiyat Filtrelemesi:** Ürünlerin fiyatına göre "Artan" ve "Azalan" şeklinde anlık olarak sıralanması sağlandı.
+- **Dinamik UI:** Arama çubuğuyla entegre çalışan, kullanıcı dostu bir sıralama dropdown'ı eklendi.
+
+### 📍 Adres ve Teslimat Yönetimi (Opsiyonel)
+- **Kapsamlı Form Tasarımı:** Şehir, İlçe, Adres, Telefon ve Kişisel bilgilerin (Ad/Soyad) alındığı modern bir form iskeleti oluşturuldu.
+- **Kayıtlı Adres Listesi:** Daha önce kaydedilen adreslerin şık bir kart yapısında (Card UI) sergilenmesi sağlandı.
+- **Zorunluluk Kontrolleri:** Kapı numarası hariç tüm alanların doldurulmasını teşvik eden görsel işaretçiler eklendi.
+
+### 🎨 Tasarım ve UX İyileştirmeleri
+- **Modern Dropdown Stili:** Standart tarayıcı görünümü yerine, projenin temasına uygun özel ok işaretli ve gölgeli dropdown tasarımı yapıldı.
+- **Responsive Düzen:** Adres formu ve ürün sıralama arayüzü oluşturuldu.
